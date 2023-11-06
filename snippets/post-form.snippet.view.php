@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-6 d-flex gap-4  flex-column">
             <h1>Pridanie nového príspevku</h1>
-            <form method="post" action="<?= $link->url("post.add") ?>">
+            <form method="post" action="">
                 <label for="inputGroupFile02" class="form-label">Súbor obrázka</label>
                 <div class="input-group mb-3 has-validation">
                      <input type="text" class="form-control" name="picture" id="inputGroupFile02">
