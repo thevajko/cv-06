@@ -12,15 +12,15 @@ Vytvorte jednoduchú aplikáciu, kde bude možné uverejňovať príspevky sklad
     3. Vytvorte triedu pre model `Post` s rovnakými atribútmi, ako má tabuľka.
 2. Zobrazenie príspevkov
     1. Pre príspevky vytvorte nový kontroler `PostController`.
-    2. Načítajte záznamy o príspevkoch z DB a pošlite ich do pohľadu `index`. Použite súbor `snippets/post.snippet.view.php` a upravte ho tak, aby zobrazila
+    2. Načítajte záznamy o príspevkoch z DB a pošlite ich do pohľadu `index`. Použite súbor `snippets/post.snippet.view.php` a upravte ho tak, aby zobrazil
        všetky príspevky z DB.
     3. Pridajte odkaz na zobrazenie príspevkov do hlavného menu.
 3. Pridávanie príspevkov
     1. Pridajte metódu pre zobrazenie formuláru na vloženie nového príspevku `add()`.
-    2. Pridajte odkaz na pridanie príspevku do pohľadu `index`.
+    2. Pridajte tlačidlo na pridanie príspevku do pohľadu `index`.
     3. Vytvorte pohľad pre formulár `form.view.php`. Vytvorte vlastný formulár, alebo použite súbor `snippets\post-form.snippet.view.php`. Obrázok
        vkladajte ako text externej URL. Doplňte správnu akciu pre formulár.
-    4. Vytvorte pohľad `add.view.php`. Vhodne do neho zakomponujte pohľad `form.view.php` tak, aby bolo možné použiť formulár opakovane.
+    4. Vytvorte pohľad `add.view.php` a vhodne do neho zakomponujte pohľad `form.view.php` tak, aby bolo možné použiť formulár opakovane.
     5. Doplňte metódu `save()` pre uloženie dát z formulára do DB a po jeho uložení presmerujte používateľa na zoznam príspevkov.
     6. Pridajte kontrolu na strane servera (obidva povinné polia, obrázok je len typu jpg, alebo png a text má aspoň 5 znakov).
        Zdrojový kód pre metódu na kontrolu chýb vo formulári nájdete v súbore `formErrors.snippet.php`. Upravte pohľad s formulárom tak, aby zobrazoval chyby.
