@@ -16,10 +16,16 @@ use PDO;
 class PostController extends AControllerBase
 {
     /**
-     * @inheritDoc
+     * Example of an action (authorization needed)
+     * @return \App\Core\Responses\Response|\App\Core\Responses\ViewResponse
      */
     public function index(): Response
     {
+        return $this->html(
+            [
+                'posts' => Post::getAll()
+            ]
+        );
     }
 
     public function add(): Response
@@ -63,7 +69,7 @@ class PostController extends AControllerBase
                 [
                     'post' => $post,
                     'errors' => $formErrors
-                ], 'add'
+                ], ($id > 0) ? 'edit' : 'add'
             );
         } else {
             if ($oldFileName != "") {
@@ -72,7 +78,7 @@ class PostController extends AControllerBase
             $newFileName = FileStorage::saveFile($this->request()->getFiles()['picture']);
             $post->setPicture($newFileName);
             $post->save();
-            return new RedirectResponse($this->url("home.index"));
+            return new RedirectResponse($this->url("post.index"));
         }
     }
 
@@ -86,7 +92,7 @@ class PostController extends AControllerBase
         } else {
             FileStorage::deleteFile($post->getPicture());
             $post->delete();
-            return new RedirectResponse($this->url("home.index"));
+            return new RedirectResponse($this->url("post.index"));
         }
     }
 

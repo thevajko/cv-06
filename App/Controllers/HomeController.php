@@ -29,11 +29,7 @@ class HomeController extends AControllerBase
      */
     public function index(): Response
     {
-        return $this->html(
-            [
-                'posts' => Post::getAll()
-            ]
-        );
+        return $this->html();
     }
 
     /**
