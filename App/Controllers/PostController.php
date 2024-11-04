@@ -23,4 +23,17 @@ class PostController extends AControllerBase
     {
         return $this->html();
     }
+
+    public function save()
+    {
+        $picture = $this->request()->getValue('picture');
+        $text = $this->request()->getValue('text');
+
+        $post = new Post();
+        $post->setText($text);
+        $post->setPicture($picture);
+        $post->save();
+
+        return $this->redirect($this->url('post.index'));
+    }
 }

@@ -17,7 +17,7 @@
             <div class="col-3 d-flex gap-4 flex-column">
                 <div class="border post d-flex flex-column">
                     <div>
-                        <img src="http://localhost/public/uploads/<?= $post->getPicture() ?>" class="img-fluid">
+                        <img src="<?= $post->getPicture() ?>" class="img-fluid">
                     </div>
                     <div class="m-2">
                         <?= $post->getText() ?>
