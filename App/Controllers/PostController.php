@@ -18,4 +18,9 @@ class PostController extends AControllerBase
             'posts' => Post::getAll()
         ]);
     }
+
+    public function add()
+    {
+        return $this->html();
+    }
 }
