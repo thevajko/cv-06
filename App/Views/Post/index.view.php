@@ -8,18 +8,23 @@
 
     <div class="container-fluid">
         <div class="row justify-content-center">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <a href="<?= $link->url('post.add')?>" class="btn btn-success">Pridať</a>
+            </div>
+        </div>
             <?php foreach ($data['posts'] as $post): ?>
             <div class="col-3 d-flex gap-4 flex-column">
                 <div class="border post d-flex flex-column">
                     <div>
-                        <img src="http://localhost/public/uploads/<?= $post->getPicture()?>" class="img-fluid">
+                        <img src="<?= $post->getPicture()?>" class="img-fluid">
                     </div>
                     <div class="m-2">
                         <?= $post->getText()?>
                     </div>
                     <div class="m-2 d-flex gap-2 justify-content-end">
-                        <a href="" class="btn btn-primary">Upraviť</a>
-                        <a href=""  class="btn btn-danger">Zmazať</a>
+                        <a href="<?= $link->url('post.edit', ['id' => $post->getId()])?>" class="btn btn-primary">Upraviť</a>
+                        <a href="<?= $link->url('post.delete', ['id' => $post->getId()])?>"  class="btn btn-danger">Zmazať</a>
                     </div>
                 </div>
             </div>
