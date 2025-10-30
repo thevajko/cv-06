@@ -16,7 +16,7 @@
                 </div>
                 <div class="m-2 d-flex gap-2 justify-content-end">
                     <a href="" class="btn btn-primary">Upraviť</a>
-                    <a href=""  class="btn btn-danger">Zmazať</a>
+                    <a href="" class="btn btn-danger">Zmazať</a>
                 </div>
             </div>
         </div>
