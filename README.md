@@ -12,14 +12,12 @@ Vytvorte jednoduchú aplikáciu, kde bude možné uverejňovať príspevky sklad
     3. Vytvorte triedu pre model `Post` s rovnakými atribútmi, ako má tabuľka.
 2. Zobrazenie príspevkov
     1. Pre príspevky vytvorte nový kontroler `PostController`.
-    2. Načítajte záznamy o príspevkoch z DB a pošlite ich do pohľadu `index`. Použite súbor `snippets/post.snippet.view.php` a upravte ho tak, aby zobrazil
-       všetky príspevky z DB.
+    2. Načítajte záznamy o príspevkoch z DB a pošlite ich do pohľadu `index`. Použite súbor `snippets/post.snippet.view.php` a upravte ho tak, aby zobrazil všetky príspevky z DB.
     3. Pridajte odkaz na zobrazenie príspevkov do hlavného menu.
 3. Pridávanie príspevkov
     1. Pridajte metódu pre zobrazenie formuláru na vloženie nového príspevku `add()`.
     2. Pridajte tlačidlo na pridanie príspevku do pohľadu `index`.
-    3. Vytvorte pohľad pre formulár `form.view.php`. Vytvorte vlastný formulár, alebo použite súbor `snippets\post-form.snippet.view.php`. Obrázok
-       vkladajte ako text externej URL. Doplňte správnu akciu pre formulár.
+    3. Vytvorte pohľad pre formulár `form.view.php`. Vytvorte vlastný formulár, alebo použite súbor `snippets\form.snippet.view.php`. Obrázok vkladajte ako text externej URL. Doplňte správnu akciu pre formulár.
     4. Vytvorte pohľad `add.view.php` a vhodne do neho zakomponujte pohľad `form.view.php` tak, aby bolo možné použiť formulár opakovane.
     5. Doplňte metódu `save()` pre uloženie dát z formulára do DB a po jeho uložení presmerujte používateľa na zoznam príspevkov.
     6. Pridajte kontrolu na strane servera (obidva povinné polia, obrázok je len typu jpg, alebo png a text má aspoň 5 znakov).
@@ -35,8 +33,7 @@ Vytvorte jednoduchú aplikáciu, kde bude možné uverejňovať príspevky sklad
     2. Vytvorte metódu `delete()` v kontroleri `PostController`. Po zmazaní príspevku, presmerujte zobrazenie na `Home` stránku.
 6. Upload obrázka (domáca úloha)
     1. Upravte formulár tak, aby bolo možné odosielať súbor s obrázkom. Nezabudnite pridať atribút `enctype="multipart/form-data"` do značky `<form>`.
-    2. Spracujte poslané súbory tak, aby sa ukladali na webový server do adresára `public\uploads`. V prípade OS Linux je potrebné
-       aj nastaviť práva na zápis pre všetkých.
+    2. Spracujte poslané súbory tak, aby sa ukladali na webový server do adresára `public\uploads`. V prípade OS Linux je potrebné aj nastaviť práva na zápis pre všetkých.
     3. Upravte zobrazenie príspevkov tak, aby sa zobrazovali obrázky, ktoré ste nahrali.
     4. Zabezpečte, aby sa nestávalo, že používatelia si budú prepisovať obrázky, ak majú rovnaký názov.
 
