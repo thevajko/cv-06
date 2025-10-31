@@ -5,10 +5,12 @@
 ?>
 <div class="container-fluid">
     <div class="row justify-content-center">
+        <?php /** @var Post[] $posts */
+        foreach ($posts as $post) : ?>
         <div class="col-3 d-flex gap-4 flex-column">
             <div class="border post d-flex flex-column">
                 <div>
-                    <img src="<?= htmlspecialchars($post->picture) ?>" class="img-fluid">
+                    <img src="<?= $post->picture ?>" class="img-fluid">
                 </div>
                 <div class="m-2">
                     <?= htmlspecialchars($post->text) ?>
@@ -19,5 +21,6 @@
                 </div>
             </div>
         </div>
+        <?php endforeach; ?>
     </div>
 </div>

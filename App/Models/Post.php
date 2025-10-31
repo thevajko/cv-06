@@ -12,9 +12,9 @@ class Post extends Model
     public int $id;
 
     /**
-     * @var string|null
+     * @var string
      */
-    public ?string $text = null;
+    public string $text = "";
 
     /**
      * @var string
@@ -42,7 +42,7 @@ class Post extends Model
         return $this->text;
     }
 
-    public function setText(?string $text): void
+    public function setText(string $text): void
     {
         $this->text = $text;
     }
@@ -56,6 +56,5 @@ class Post extends Model
     {
         $this->picture = $picture;
     }
-
 
 }
