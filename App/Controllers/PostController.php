@@ -16,10 +16,9 @@ class PostController extends BaseController
         return $this->html(['posts' => $posts]);
     }
 
-    public function add(Request $request): Response
+    private function processPostForm(Post $post, Request $request): array
     {
         $errors = [];
-        $post = new Post();
         if ($request->isPost()) {
             $post->text = trim($request->post('text'));
             $post->picture = trim($request->post('picture'));
@@ -33,34 +32,33 @@ class PostController extends BaseController
 
             if (empty($errors)) {
                 $post->save();
-                return $this->redirect('?c=Post&a=index');
+                return ['redirect' => true];
             }
         }
-        return $this->html(['errors' => $errors, 'post' => $post], 'add');
+        return ['errors' => $errors, 'post' => $post];
+    }
+
+    public function add(Request $request): Response
+    {
+        $post = new Post();
+        $result = $this->processPostForm($post, $request);
+        if (!empty($result['redirect'])) {
+            return $this->redirect('?c=Post&a=index');
+        }
+        return $this->html(['errors' => $result['errors'], 'post' => $result['post']], 'add');
     }
 
     public function edit(Request $request): Response
     {
-        $errors = [];
         $id = $request->get('id');
         $post = Post::getOne($id);
         if (!$post) {
             return $this->redirect('?c=Post&a=index');
         }
-        if ($request->isPost()) {
-            $post->text = trim($request->post('text'));
-            $post->picture = trim($request->post('picture'));
-            if (!$post->text) {
-                $errors[] = 'Text je povinný.';
-            }
-            if (!$post->picture) {
-                $errors[] = 'Obrázok (URL) je povinný.';
-            }
-            if (empty($errors)) {
-                $post->save();
-                return $this->redirect('?c=Post&a=index');
-            }
+        $result = $this->processPostForm($post, $request);
+        if (!empty($result['redirect'])) {
+            return $this->redirect('?c=Post&a=index');
         }
-        return $this->html(['post' => $post, 'errors' => $errors], 'edit');
+        return $this->html(['post' => $result['post'], 'errors' => $result['errors']], 'edit');
     }
 }
