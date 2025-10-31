@@ -61,4 +61,14 @@ class PostController extends BaseController
         }
         return $this->html(['post' => $result['post'], 'errors' => $result['errors']], 'edit');
     }
+
+    public function delete(Request $request): Response
+    {
+        $id = $request->get('id');
+        $post = Post::getOne($id);
+        if ($post) {
+            $post->delete();
+        }
+        return $this->redirect('?c=post&a=index');
+    }
 }

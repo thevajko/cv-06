@@ -22,7 +22,7 @@
                 </div>
                 <div class="m-2 d-flex gap-2 justify-content-end">
                     <a href="<?= $link->url('post.edit', ['id' => $post->id]) ?>" class="btn btn-primary">Upraviť</a>
-                    <a href=""  class="btn btn-danger">Zmazať</a>
+                    <a href="<?= $link->url('post.delete', ['id' => $post->id]) ?>" class="btn btn-danger" onclick="return confirm('Naozaj chcete zmazať tento príspevok?');">Zmazať</a>
                 </div>
             </div>
         </div>
