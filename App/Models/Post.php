@@ -9,7 +9,7 @@ class Post extends Model
     /**
      * @var int
      */
-    public int $id;
+    public ?int $id = null;
 
     /**
      * @var string

@@ -1,9 +1,14 @@
 <?php
 
 /** @var \App\Models\Post $post */
-/** @var Framework\Support\LinkGenerator $link */
+/** @var \Framework\Support\LinkGenerator $link */
 ?>
 <div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-12 d-flex justify-content-end">
+            <a href="<?= $link->url('post.add') ?>" class="btn btn-success">+ pridať</a>
+        </div>
+    </div>
     <div class="row justify-content-center">
         <?php /** @var Post[] $posts */
         foreach ($posts as $post) : ?>
