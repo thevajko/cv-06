@@ -21,7 +21,7 @@
                     <?= htmlspecialchars($post->text) ?>
                 </div>
                 <div class="m-2 d-flex gap-2 justify-content-end">
-                    <a href="" class="btn btn-primary">Upraviť</a>
+                    <a href="<?= $link->url('post.edit', ['id' => $post->id]) ?>" class="btn btn-primary">Upraviť</a>
                     <a href=""  class="btn btn-danger">Zmazať</a>
                 </div>
             </div>

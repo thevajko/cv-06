@@ -19,25 +19,48 @@ class PostController extends BaseController
     public function add(Request $request): Response
     {
         $errors = [];
+        $post = new Post();
         if ($request->isPost()) {
-            $text = trim($request->post('text'));
-            $picture = trim($request->post('picture'));
+            $post->text = trim($request->post('text'));
+            $post->picture = trim($request->post('picture'));
 
-            if (!$text) {
+            if (!$post->text) {
                 $errors[] = 'Text je povinný.';
             }
-            if (!$picture) {
+            if (!$post->picture) {
                 $errors[] = 'Obrázok (URL) je povinný.';
             }
 
             if (empty($errors)) {
-                $post = new Post();
-                $post->text = $text;
-                $post->picture = $picture;
                 $post->save();
                 return $this->redirect('?c=Post&a=index');
             }
         }
-        return $this->html(['errors' => $errors]);
+        return $this->html(['errors' => $errors, 'post' => $post], 'add');
+    }
+
+    public function edit(Request $request): Response
+    {
+        $errors = [];
+        $id = $request->get('id');
+        $post = Post::getOne($id);
+        if (!$post) {
+            return $this->redirect('?c=Post&a=index');
+        }
+        if ($request->isPost()) {
+            $post->text = trim($request->post('text'));
+            $post->picture = trim($request->post('picture'));
+            if (!$post->text) {
+                $errors[] = 'Text je povinný.';
+            }
+            if (!$post->picture) {
+                $errors[] = 'Obrázok (URL) je povinný.';
+            }
+            if (empty($errors)) {
+                $post->save();
+                return $this->redirect('?c=Post&a=index');
+            }
+        }
+        return $this->html(['post' => $post, 'errors' => $errors], 'edit');
     }
 }
