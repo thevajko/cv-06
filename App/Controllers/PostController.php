@@ -34,6 +34,7 @@ class PostController extends BaseController
     public function save(Request $request): Response
     {
         $values = [
+            'id' => $request->value('id'),
             'text' => trim((string)$request->value('text')),
             'picture' => trim((string)$request->value('picture')),
         ];
@@ -42,16 +43,70 @@ class PostController extends BaseController
 
         if (!empty($errors)) {
             // Show form again with errors and previous values
+            // if editing (id present), show edit view; otherwise show add view
+            if (!empty($values['id'])) {
+                return $this->html(compact('values', 'errors'), 'edit');
+            }
             return $this->html(compact('values', 'errors'), 'add');
         }
 
-        // Save new post
-        $post = new Post();
+        // Save new post or update existing
+        if (!empty($values['id'])) {
+            $post = Post::getOne($values['id']);
+            if ($post === null) {
+                // not found - treat as new
+                $post = new Post();
+            }
+        } else {
+            $post = new Post();
+        }
+
         $post->setText($values['text']);
         $post->setPicture($values['picture']);
         $post->save();
 
         // Redirect to posts list
+        return $this->redirect($this->url('post.index'));
+    }
+
+    public function edit(Request $request): Response
+    {
+        $id = $request->value('id');
+        $post = null;
+        if (!empty($id)) {
+            $post = Post::getOne($id);
+        }
+
+        if ($post === null) {
+            // redirect to list if not found
+            return $this->redirect($this->url('post.index'));
+        }
+
+        // prepare values for the form
+        $values = [
+            'id' => $post->getId(),
+            'text' => $post->getText(),
+            'picture' => $post->getPicture(),
+        ];
+        $errors = [];
+
+        return $this->html(compact('values', 'errors'), 'edit');
+    }
+
+    public function delete(Request $request): Response
+    {
+        $id = $request->value('id');
+        if (empty($id)) {
+            return $this->redirect($this->url('post.index'));
+        }
+
+        $post = Post::getOne($id);
+        if ($post === null) {
+            return $this->redirect($this->url('post.index'));
+        }
+
+        // Delete the post and redirect back to the list
+        $post->delete();
         return $this->redirect($this->url('post.index'));
     }
 

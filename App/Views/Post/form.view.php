@@ -15,6 +15,10 @@
 <?php endif; ?>
 
 <form method="post" action="<?= $link->url('post.save') ?>">
+    <?php if (!empty($values['id'])): ?>
+        <input type="hidden" name="id" value="<?= htmlspecialchars($values['id']) ?>">
+    <?php endif; ?>
+
     <label for="picture" class="form-label">URL obrázka</label>
     <div class="input-group mb-3 has-validation">
         <input type="text" class="form-control" name="picture" id="picture" value="<?= htmlspecialchars($values['picture'] ?? '') ?>">
@@ -27,4 +31,3 @@
 
     <button type="submit" class="btn btn-primary">Uložiť</button>
 </form>
-
