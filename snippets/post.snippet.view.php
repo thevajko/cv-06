@@ -6,17 +6,19 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-3 d-flex gap-4 flex-column">
+        <div class="col-3 d-flex gap-4 flex-column mb-3">
             <div class="border post d-flex flex-column">
-                <div>
-                    <img src="http://localhost/public/uploads/37129207054184-free-photo-of-vrch-hora-dom-hmla.jpeg" class="img-fluid">
-                </div>
+                <?php if (!empty($post->getPicture())) : ?>
+                    <div>
+                        <img src="<?= htmlspecialchars($post->getPicture()) ?>" class="img-fluid" alt="Post picture">
+                    </div>
+                <?php endif; ?>
                 <div class="m-2">
-                    Toto je text obrázku
+                    <?= nl2br(htmlspecialchars($post->getText())) ?>
                 </div>
                 <div class="m-2 d-flex gap-2 justify-content-end">
-                    <a href="" class="btn btn-primary">Upraviť</a>
-                    <a href=""  class="btn btn-danger">Zmazať</a>
+                    <a href="<?= $link->url(['post.edit', $post->getId()]) ?>" class="btn btn-primary">Upraviť</a>
+                    <a href="<?= $link->url(['post.delete', $post->getId()]) ?>"  class="btn btn-danger">Zmazať</a>
                 </div>
             </div>
         </div>

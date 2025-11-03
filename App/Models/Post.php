@@ -6,9 +6,9 @@ use Framework\Core\Model;
 
 class Post extends Model
 {
-    protected ?int $id;
-    protected string $text;
-    protected string $picture;
+    protected ?int $id = null;
+    protected string $text = "";
+    protected string $picture = "";
 
     public function getId(): ?int
     {
