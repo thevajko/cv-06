@@ -16,14 +16,16 @@
         <div class="col-3 d-flex gap-4 flex-column">
             <div class="border post d-flex flex-column">
                 <div>
-                    <img src="<?= $post->getPicture() ?>" class="img-fluid">
+                    <img src="<?= $post->getPicture() ?>" class="img-fluid" alt="Obrázok príspevku">
                 </div>
                 <div class="m-2">
                     <?= $post->getText() ?>
                 </div>
                 <div class="m-2 d-flex gap-2 justify-content-end">
-                    <a href="" class="btn btn-primary">Upraviť</a>
-                    <a href=""  class="btn btn-danger">Zmazať</a>
+                    <a href="<?= $link->url('Post.edit', ['id' => $post->getId()]) ?>" class="btn btn-primary">Upraviť</a>
+                    <form method="post" action="<?= $link->url('Post.delete', ['id' => $post->getId()]) ?>" style="display:inline;" onsubmit="return confirm('Naozaj chcete zmazať tento príspevok?');">
+                        <button type="submit" class="btn btn-danger">Zmazať</button>
+                    </form>
                 </div>
             </div>
         </div>

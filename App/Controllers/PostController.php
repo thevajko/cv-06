@@ -59,4 +59,15 @@ class PostController extends BaseController
         // Presmerovanie na zoznam príspevkov
         return $this->redirect($this->url("post.index"));
     }
+    public function delete(Request $request): Response
+    {
+        $id = $request->value('id');
+        if ($id) {
+            $post = Post::getOne($id);
+            if ($post) {
+                $post->delete();
+            }
+        }
+        return $this->redirect($this->url('Post.index'));
+    }
 }
