@@ -30,6 +30,7 @@ class PostController extends BaseController
 
     public function save(Request $request): Response
     {
+        $id = $request->value('id');
         $picture = trim($request->value('picture'));
         $text = trim($request->value('text'));
         $errors = [];
@@ -40,22 +41,32 @@ class PostController extends BaseController
         if ($text === '') {
             $errors[] = 'Pole Text príspevku musí byť vyplnené!';
         }
-//        // Validácia obrázka (jpg/png)
-//        if ($picture !== '' && !preg_match('/\\.(jpg|jpeg|png)$/i', $picture)) {
-//            $errors[] = 'Obrázok musí byť typu JPG alebo PNG!';
-//        }
         // Validácia dĺžky textu
         if ($text !== '' && mb_strlen($text) < 5) {
             $errors[] = 'Počet znakov v texte príspevku musí byť aspoň 5!';
         }
         if (!empty($errors)) {
-            return $this->html(['errors' => $errors, 'picture' => $picture, 'text' => $text]);
+            return $this->html([
+                'errors' => $errors,
+                'picture' => $picture,
+                'text' => $text,
+                'postId' => $id
+            ], 'add'); // Opravené: správna cesta k view
         }
         // Uloženie do DB
-        $post = new Post();
-        $post->picture = $picture;
-        $post->text = $text;
-        $post->save();
+        if ($id) {
+            $post = Post::getOne($id);
+            if ($post) {
+                $post->picture = $picture;
+                $post->text = $text;
+                $post->save();
+            }
+        } else {
+            $post = new Post();
+            $post->picture = $picture;
+            $post->text = $text;
+            $post->save();
+        }
         // Presmerovanie na zoznam príspevkov
         return $this->redirect($this->url("post.index"));
     }
@@ -69,5 +80,23 @@ class PostController extends BaseController
             }
         }
         return $this->redirect($this->url('Post.index'));
+    }
+    public function edit(Request $request): Response
+    {
+        $id = $request->value('id');
+        $post = null;
+        if ($id) {
+            $post = Post::getOne($id);
+        }
+        $errors = [];
+        $picture = $post ? $post->picture : '';
+        $text = $post ? $post->text : '';
+        $postId = $post ? $post->id : null;
+        return $this->html([
+            'errors' => $errors,
+            'picture' => $picture,
+            'text' => $text,
+            'postId' => $postId
+        ], 'add');
     }
 }

@@ -1,5 +1,5 @@
 <?php
-// ...existing code...
+$formAction = $postId ? $link->url('Post.save') : $link->url('Post.save');
 ?>
 <div class="container mt-5">
     <div class="row justify-content-center">

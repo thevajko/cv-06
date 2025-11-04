@@ -6,15 +6,18 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-10 d-flex gap-4  flex-column">
-            <form method="post" action="">
+            <form method="post" action="<?= $formAction ?>">
+                <?php if (!empty($postId)): ?>
+                    <input type="hidden" name="id" value="<?= htmlspecialchars($postId) ?>">
+                <?php endif; ?>
                 <label for="inputGroupFile02" class="form-label">Súbor obrázka</label>
                 <div class="input-group mb-3 has-validation">
-                    <input type="text" class="form-control" name="picture" id="inputGroupFile02">
+                    <input type="text" class="form-control" name="picture" id="inputGroupFile02" value="<?= htmlspecialchars($picture ?? '') ?>">
                     <!--<input type="file" class="form-control " name="picture" id="inputGroupFile02">-->
                 </div>
                 <label for="post-text" class="form-label">Text príspevku</label>
                 <div class="input-group has-validation mb-3 ">
-                    <textarea class="form-control" aria-label="With textarea" name="text" id="post-text"></textarea>
+                    <textarea class="form-control" aria-label="With textarea" name="text" id="post-text"><?= htmlspecialchars($text ?? '') ?></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Uložiť</button>
             </form>
