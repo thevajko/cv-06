@@ -5,6 +5,7 @@ use Framework\Core\Model;
 
 class Post extends Model
 {
+    protected static ?string $tableName = 'posts';
     public ?int $id = null;
     public ?string $text = null;
     public string $picture;
