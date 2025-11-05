@@ -32,6 +32,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?= $link->url('home.contact') ?>">Contact</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $link->url('post.index') ?>">Prispevky</a>
+            </li>
         </ul>
         <?php if ($auth?->isLogged()) { ?>
             <span class="navbar-text">Logged in user: <b><?= $auth?->user?->name ?></b></span>
