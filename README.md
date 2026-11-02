@@ -8,7 +8,7 @@ Vytvorte jednoduchú aplikáciu, kde bude možné uverejňovať príspevky sklad
 
 1. Vytvorenie modelu pre entitu `Post`
     1. Použite SQL skript `ddl.posts_01.sql` na vytvorenie DB tabuľky v DB `vaiicko_db`.
-    2. Do tabuľky vložte 3 riadky. Obrázky sa nachádzajú v adresári `uploads`.
+    2. Do tabuľky vložte 3 riadky. Obrázky nájdite na internete.
     3. Vytvorte triedu pre model `Post` s rovnakými atribútmi, ako má tabuľka.
 2. Zobrazenie príspevkov
     1. Pre príspevky vytvorte nový kontroler `PostController`.
@@ -31,11 +31,6 @@ Vytvorte jednoduchú aplikáciu, kde bude možné uverejňovať príspevky sklad
 5. Zmazanie príspevku
     1. Nastavte správnu akciu k tlačidlu `Zmazať` pri zobrazení príspevku.
     2. Vytvorte metódu `delete()` v kontroleri `PostController`. Po zmazaní príspevku, presmerujte zobrazenie na `Home` stránku.
-6. Upload obrázka (domáca úloha)
-    1. Upravte formulár tak, aby bolo možné odosielať súbor s obrázkom. Nezabudnite pridať atribút `enctype="multipart/form-data"` do značky `<form>`.
-    2. Spracujte poslané súbory tak, aby sa ukladali na webový server do adresára `public\uploads`. V prípade OS Linux je potrebné aj nastaviť práva na zápis pre všetkých.
-    3. Upravte zobrazenie príspevkov tak, aby sa zobrazovali obrázky, ktoré ste nahrali.
-    4. Zabezpečte, aby sa nestávalo, že používatelia si budú prepisovať obrázky, ak majú rovnaký názov.
 
 ## Ako nájsť vetvu môjho cvičenia?
 
