@@ -5,16 +5,15 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-10 d-flex gap-4  flex-column">
+        <div class="col-10">
             <form method="post" action="">
-                <label for="inputGroupFile02" class="form-label">Súbor obrázka</label>
-                <div class="input-group mb-3 has-validation">
-                    <input type="text" class="form-control" name="picture" id="inputGroupFile02">
-                    <!--<input type="file" class="form-control " name="picture" id="inputGroupFile02">-->
+                <div class="mb-3">
+                    <label for="picture" class="form-label">URL obrázku</label>
+                    <input type="url" class="form-control" name="picture" id="picture">
                 </div>
-                <label for="post-text" class="form-label">Text príspevku</label>
-                <div class="input-group has-validation mb-3 ">
-                    <textarea class="form-control" aria-label="With textarea" name="text" id="post-text"></textarea>
+                <div class="mb-3">
+                    <label for="text" class="form-label">Text príspevku</label>
+                    <textarea class="form-control" name="text" id="text"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Uložiť</button>
             </form>

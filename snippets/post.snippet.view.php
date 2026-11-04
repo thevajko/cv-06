@@ -6,17 +6,15 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-3 d-flex gap-4 flex-column">
-            <div class="border post d-flex flex-column">
-                <div>
-                    <img src="http://localhost/public/uploads/37129207054184-free-photo-of-vrch-hora-dom-hmla.jpeg" class="img-fluid">
+        <div class="col-12 col-md-6 col-lg-3 d-flex gap-4 flex-column">
+            <div class="card">
+                <img src="" class="card-img-top" alt="">
+                <div class="card-body">
+                    <p class="card-text">Toto je text obrázku</p>
                 </div>
-                <div class="m-2">
-                    Toto je text obrázku
-                </div>
-                <div class="m-2 d-flex gap-2 justify-content-end">
+                <div class="card-footer d-flex gap-2 justify-content-end">
                     <a href="" class="btn btn-primary">Upraviť</a>
-                    <a href=""  class="btn btn-danger">Zmazať</a>
+                    <a href="" class="btn btn-danger">Zmazať</a>
                 </div>
             </div>
         </div>
