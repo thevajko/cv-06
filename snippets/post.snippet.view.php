@@ -5,16 +5,18 @@
 ?>
 
 <div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6 col-lg-3 d-flex gap-4 flex-column">
-            <div class="card">
-                <img src="" class="card-img-top" alt="">
+    <div class="row g-4 justify-content-center">
+        <div class="col-auto mw-100">
+            <div class="card post h-100">
+                <img src="https://picsum.photos/id/1018/800/600.jpg" class="card-img-top" alt="">
                 <div class="card-body">
                     <p class="card-text">Toto je text obrázku</p>
                 </div>
                 <div class="card-footer d-flex gap-2 justify-content-end">
                     <a href="" class="btn btn-primary">Upraviť</a>
-                    <a href="" class="btn btn-danger">Zmazať</a>
+                    <form method="post" action="">
+                        <button type="submit" class="btn btn-danger">Zmazať</button>
+                    </form>
                 </div>
             </div>
         </div>
